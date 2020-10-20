@@ -7,26 +7,40 @@ export const sidebarStyles = theme => ({
   root: {
     display: 'flex',
   },
-  padding4: {
-    padding: '4px',
-  },
-  // Pages Style goes here 
-  paperPadding: {
-    padding: '10px',
-  },
+
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
       flexShrink: 0,
-       height: '50px',
     },
+    '&:hover': {
+       background: "#fff",
+    },
+  },
+  listItem: {
+    borderBottom: '1px solid #ccc',
+    borderLeft: `4px solid ${theme.palette.secondary.light}`,
+    borderRadius: '10px 0px 0px 10px',
+    marginBottom: 2,
+    '&:hover, &:active': {
+       borderLeft: `4px solid ${theme.palette.secondary.main}`,
+       backgroundColor: theme.palette.primary.main,
+       color: theme.palette.secondary.main,
+        "& $listIcon": {
+        color: theme.palette.secondary.main,
+      }
+    },
+  },
+  listIcon: {
+    fontSize: 30,
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      height: '50px',
     },
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -34,17 +48,20 @@ export const sidebarStyles = theme => ({
       display: 'none',
     },
   },
+
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
+    border: 'none',
+    backgroundColor: theme.palette.primary.light,
   },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    justifyContent: 'flex-between',
-    backgroundColor: theme.primary,
+    flexDirection: 'column',
+    borderBottom: '1px solid silver',
+    padding: '15px 0px',
   },
   content: {
     flexGrow: 1,
@@ -61,7 +78,7 @@ export const loginStyles = theme => ({
     backgroundImage: `url(${backgroundImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -76,7 +93,7 @@ export const loginStyles = theme => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {

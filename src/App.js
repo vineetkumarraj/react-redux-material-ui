@@ -12,15 +12,16 @@ class App extends Component {
   componentDidMount() {
     this.props.loadUser();
   }
+
   render() {
     return (
       <div className="App" id="wrapper">
         <Router>
           <Switch>
-            <PublicRoute {...this.props} path="/login"><Authentication /></PublicRoute>
-            <PublicRoute {...this.props} path="/reset-password"><Authentication /></PublicRoute>
-            <PublicRoute {...this.props} path="/confirm-password"><Authentication /></PublicRoute>
-            <PrivateRoute {...this.props} path="/"><Admin /></PrivateRoute>
+              <PublicRoute {...this.props} path="/login"><Authentication /></PublicRoute>
+              <PublicRoute {...this.props} path="/reset-password"><Authentication /></PublicRoute>
+              <PublicRoute {...this.props} path="/confirm-password"><Authentication /></PublicRoute>
+              <PrivateRoute {...this.props} path="/"><Admin /></PrivateRoute>
           </Switch>
         </Router>
       </div>
@@ -28,4 +29,4 @@ class App extends Component {
   };
 }
 const mapStateToProps = state => ({auth: state.auth})
-export default connect(mapStateToProps, {loadUser} )(App);
+export default connect(mapStateToProps, {loadUser})(App);

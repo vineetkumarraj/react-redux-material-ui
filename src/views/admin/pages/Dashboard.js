@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Button, Paper, Typography } from '@material-ui/core';
+import BreadCrumb from '../../../components/BreadCrumb';
 
 class Dashboard extends Component {
 
-    componentDidMount(){
-        console.log(this.props)
-    }
     render() {
         return (
-            <Paper className={this.props.classes.paperPadding}>
-               <Typography>I am dashboard</Typography> 
-               <Button> Sample </Button>
-            </Paper>
+            <Fragment>
+                <BreadCrumb />
+                <Paper className={this.props.classes.content}>
+                <Typography>I am dashboard</Typography> 
+                <Button> Sample </Button>
+                </Paper>
+            </Fragment>
         )
     }
 }

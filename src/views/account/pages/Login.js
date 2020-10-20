@@ -7,6 +7,9 @@ import { TiLockClosedOutline } from 'react-icons/ti';
 import { loginUser } from '../../../actions/AuthActions';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { withSnackbar } from 'notistack';
+import { clearErrors } from '../../../actions/ErrorActions';
+
 
 class Login extends Component {
 
@@ -24,6 +27,23 @@ class Login extends Component {
 
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value});
+    }
+
+    componentDidUpdate(prevProps) {
+        const { error } = this.props;
+        if ( error !== prevProps.error) {
+            if (error.id === 'LOGIN_FAIL') {
+                this.props.enqueueSnackbar(error.message, {
+                    variant: 'error',
+                    anchorOrigin: {
+                        vertical: 'top',
+                        horizontal: 'right'
+                    }
+                });
+
+                this.props.clearErrors();
+            }
+        }
     }
 
     render() {
@@ -90,7 +110,7 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = state => ({auth: state.auth})
+const mapStateToProps = state => ({error: state.error})
 
-export default compose(connect(mapStateToProps, {loginUser}), withStyles(loginStyles))(Login);
+export default withSnackbar(compose(connect(mapStateToProps, {loginUser, clearErrors}), withStyles(loginStyles))(Login));
 
