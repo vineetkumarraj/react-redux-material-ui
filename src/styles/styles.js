@@ -19,15 +19,15 @@ export const sidebarStyles = theme => ({
   },
   listItem: {
     borderBottom: '1px solid #ccc',
-    borderLeft: `4px solid ${theme.palette.secondary.light}`,
+    borderLeft: `6px solid ${theme.palette.secondary.light}`,
     borderRadius: '10px 0px 0px 10px',
     marginBottom: 2,
     '&:hover, &:active': {
-       borderLeft: `4px solid ${theme.palette.secondary.main}`,
+       borderLeft: `6px solid ${theme.palette.secondary.main}`,
        backgroundColor: theme.palette.primary.main,
-       color: theme.palette.secondary.main,
+       color: '#fff',
         "& $listIcon": {
-        color: theme.palette.secondary.main,
+        color: '#fff',
       }
     },
   },
@@ -49,7 +49,6 @@ export const sidebarStyles = theme => ({
     },
   },
 
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,

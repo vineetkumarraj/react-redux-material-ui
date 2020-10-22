@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Box, Drawer, Hidden, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
 import  { RiCreativeCommonsFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
 
@@ -17,11 +18,16 @@ class Sidebar extends Component {
             </div>
             <List>
                 {['Dashboard', 'Users', 'Flyers', 'Local News', 'Local Events', 'Library', 'Account'].map((text, index) => (
-                <ListItem button key={text} className={this.props.classes.listItem}>
+                <ListItem  component={Link} to="/dashboard" button key={text} className={this.props.classes.listItem}>
                     <ListItemIcon>{index % 2 === 0 ? <RiCreativeCommonsFill size="1.5rem" className={this.props.classes.listIcon} /> : <RiCreativeCommonsFill size="1.5rem" className={this.props.classes.listIcon} />}</ListItemIcon>
                     <ListItemText primary={text} />
                 </ListItem>
                 ))}
+
+                <ListItem component={Link} to="/category" button className={this.props.classes.listItem}>
+                        <ListItemIcon><RiCreativeCommonsFill size="1.5rem" className={this.props.classes.listIcon} /> </ListItemIcon>
+                        <ListItemText primary="Category" />
+                </ListItem>
             </List>
         </div>
     );

@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router";
 import { withStyles } from '@material-ui/core/styles';
 import { sidebarStyles } from '../../styles/styles';
 import { CssBaseline } from '@material-ui/core';
+import { GetCategory } from './pages/category';
 
 class Admin extends Component {
 
@@ -24,9 +25,10 @@ class Admin extends Component {
                 <main className={ this.state.classes.content }>
                     <div className={ this.state.classes.toolbar } />
                     <Switch>
-                        <Route path={`/dashboard`}><Dashboard {...this.state} /></Route>
-                        <Route path={`/profile`}><Profile {...this.state} /></Route>
-                        <Route path="/"> <Dashboard {...this.state} /> </Route>
+                        <Route exact path={`/dashboard`}><Dashboard {...this.state} /></Route>
+                        <Route exact path="/"> <Dashboard {...this.state} /> </Route>
+                        <Route exact path={`/profile`}><Profile {...this.state} /></Route>
+                        <Route exact path="/category"> <GetCategory {...this.state} /> </Route>
                     </Switch>
                 </main>
             </div>
